@@ -3,9 +3,14 @@ from functions.create_db import create_db
 from functions.create_table import create_table
 from functions.insert_row import insert_one_row
 
+DB = 'database3.db'
+TB = 'tabela'
 
-create_db('teste2.db')
-create_table('teste2.db', 'teste', 'nome')
+create_db(DB)
+create_table(DB, TB, 'id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL , nome VARCHAR(255), idade INTEGER')
 
-insert_one_row('teste2.db', 'teste', 'nome', 'EricFernandez')
-
+insert_one_row(
+            DB, 
+            TB, 
+            'nome, idade',
+            '"Eric", 28')

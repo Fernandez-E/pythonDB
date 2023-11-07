@@ -13,7 +13,17 @@ def insert_one_row(
         table_name (str): A table's name  
         columns (str): Columns query 
         columns_name (str): Columns to insert values
-        values (str): 
+        values (str):
+
+        Example:
+        ```{python}
+        insert_one_row (
+            'test.db', 
+            'tabela', 
+            'id, name, age',
+            '1, "Eric", 28'
+        )
+        ```
 
     """
     conn = sqlite3.connect(f'{database_name}')
