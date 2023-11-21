@@ -12,10 +12,6 @@ TB = 'tabela'
 
 get_table(DB, TB)
 
-
-
-
-
 #############################
 import sqlite3
 
@@ -28,10 +24,6 @@ cursor.execute("""
                """)
 
 conn.commit()
-
-
-
-
 
 create_db('bd.db')
 
@@ -65,34 +57,21 @@ df = pd.read_sql_query(
     build_table_query('tabela'), conn
 )
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 DB = 'database3.db'
-TB = 'tabela'
+TB = 'tabela2'
 
 create_db(DB)
-create_table(DB, TB, 'id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL , nome VARCHAR(255), idade INTEGER')
+create_table(DB, TB, 'id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL , idade INTEGER')
 
 insert_one_row(
             DB, 
             TB, 
-            'nome, idade',
-            '"Eric", 28')
-
-
+            'idade',
+            28)
 
 from functions.delete_rows import delete_rows
 
 delete_rows('database3.db', 'tabela', 'nome = "AAA"')
+
+### JOIN
+

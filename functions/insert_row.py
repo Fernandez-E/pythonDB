@@ -66,7 +66,7 @@ def insert_many_rows(
     conn = sqlite3.connect(database_name)
     cursor = conn.cursor()
 
-    query = f"INSERT INTO {table_name} ({columns_name}) VALUES (?, ?)"
+    query = f"INSERT INTO {table_name} ({columns_name}) VALUES (?, ?, ?)"
 
     cursor.executemany(query, values_list)
 
