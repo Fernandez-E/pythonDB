@@ -44,13 +44,17 @@ cursor.executemany(
 
 conn.commit()
 
-insert_many_rows(DB, TB, 'nome, idade', [('srydfg', 22), ('dfjgur', 55)])
+insert_many_rows(
+    DB, 
+    TB, 
+    'id, nome', 
+    [(1, 'srydfg')])
 
 df = pd.read_sql_query(
     """
     SELECT * FROM tabela
     """
-    , conn
+    ,conn
 )
 
 df = pd.read_sql_query(
