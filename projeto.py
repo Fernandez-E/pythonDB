@@ -12,7 +12,7 @@ def menu():
 
     create_db(DB)
 
-    create_table(DB, TB, ("id INTEGER PRIMARY KEY , tipo INTEGER, modelo VARCHAR(60), fabricante VARCHAR(60), ano VARCHAR(10), cor VARCHAR(60), potencia INTEGER, preco INTEGER"))
+    create_table(DB, TB, ("id INTEGER PRIMARY KEY , placa VARCHAR(8) UNIQUE, tipo INTEGER, modelo VARCHAR(60), fabricante VARCHAR(60), ano VARCHAR(10), cor VARCHAR(60), potencia INTEGER, preco INTEGER"))
     print("1 - Registrar novo veículo")
     print("2 - Pesquisar veículos")
     print("3 - Deletar veículo")
@@ -31,24 +31,32 @@ def tipo_veiculo():
     return tipo
 
 print("#### SISTEMA DE GERENCIAMENTO DE VEÍCULOS ####")
-op = menu()
 
-if(op == 1):
-    print("### Inserir novo veículo ###")
-    tipo = tipo_veiculo()
-    modelo = str(input("Modelo: "))
-    fabricante = input("Marca: ")
-    ano = input("Ano de fabricação: ")
-    cor = input("Cor: ")
-    potencia = input("Potencia: ")
-    preco = input("Preço: ")
-    insert_one_row(DB, TB, "tipo, modelo, fabricante, ano, cor, potencia, preco", f"{tipo}, '{modelo}', '{fabricante}', '{ano}', '{cor}', {potencia}, {preco}")
+while True:
+    op = menu()
+    if (op == 5):
+        break
 
-elif(op == 2):
-    pass
-elif(op == 3):
-    pass
-elif(op == 4):
-    pass
-else:
-    print("Finalizando o programa...")
+    if(op == 1):
+        print("### Inserir novo veículo ###")
+        tipo = tipo_veiculo()
+        placa = input("Placa: ")
+        modelo = input("Modelo: ")
+        fabricante = input("Marca: ")
+        ano = input("Ano de fabricação: ")
+        cor = input("Cor: ")
+        potencia = input("Potencia: ")
+        preco = input("Preço: ")
+        insert_one_row(DB, TB, "tipo, placa, modelo, fabricante, ano, cor, potencia, preco", f"{tipo}, '{placa}', '{modelo}', '{fabricante}', '{ano}', '{cor}', {potencia}, {preco}")
+
+    elif(op == 2):
+        print("### BUSCAR REGISTRO DE VEÍCULO ###")
+        placa = input("Placa: ")
+    
+
+    elif(op == 3):
+        pass
+    elif(op == 4):
+        pass
+    else:
+        print("Finalizando o programa...")

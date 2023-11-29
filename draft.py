@@ -7,6 +7,36 @@ import pandas as pd
 
 from functions.get_table import get_table
 
+
+conn = sqlite3.connect("veiculos.db")
+cursor = conn.cursor()
+
+cursor.execute(f"""
+                SELECT * FROM veiculos WHERE cor = "Preto" 
+               """)
+
+
+for item in cursor.fetchall():
+    print(f"Resultado da busca: {item[4]} {item[3]} {item[6]}, {item[7]}cv, Ano {item[5]} - R${item[8]}")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 DB = 'database3.db'
 TB = 'tabela'
 
