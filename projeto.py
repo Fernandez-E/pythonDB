@@ -4,6 +4,9 @@ from functions.create_table import create_table
 from functions.insert_row import insert_many_rows, insert_one_row
 from functions.delete_rows import delete_rows
 from functions.get_table import get_table
+from functions.get_row import get_vehicle
+
+from time import sleep
 
 DB = 'veiculos.db'
 TB = 'veiculos'
@@ -35,12 +38,14 @@ print("#### SISTEMA DE GERENCIAMENTO DE VEÍCULOS ####")
 while True:
     op = menu()
     if (op == 5):
+        print("Finalizando o programa...")
+        sleep(1)
         break
 
     if(op == 1):
         print("### Inserir novo veículo ###")
         tipo = tipo_veiculo()
-        placa = input("Placa: ")
+        placa = input("Placa: ").upper()
         modelo = input("Modelo: ")
         fabricante = input("Marca: ")
         ano = input("Ano de fabricação: ")
@@ -51,11 +56,13 @@ while True:
 
     elif(op == 2):
         print("### BUSCAR REGISTRO DE VEÍCULO ###")
-        placa = input("Placa: ")
-    
+        placa = input("Placa: ").upper()
+        get_vehicle(DB, TB, placa)
 
     elif(op == 3):
-        pass
+        print("### DELETAR REGISTRO DE VEÍCULO ###")
+        placa = input("Placa: ").upper()
+        delete_rows(placa)
     elif(op == 4):
         pass
     else:
